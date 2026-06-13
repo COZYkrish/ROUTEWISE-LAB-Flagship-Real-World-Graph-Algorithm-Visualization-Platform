@@ -1,21 +1,17 @@
-import { motion, MotionValue, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
-interface Props {
-  scrollYProgress: MotionValue<number>;
-}
-
-export default function CTASection({ scrollYProgress }: Props) {
-  // Appears from 0.85 onwards
-  const opacity = useTransform(scrollYProgress, [0.85, 0.95], [0, 1]);
-  const scale = useTransform(scrollYProgress, [0.85, 0.95], [0.9, 1]);
+export default function CTASection() {
   const navigate = useNavigate();
 
   return (
     <motion.section 
-      className="min-h-screen w-full flex flex-col items-center justify-center relative z-50 px-6 py-24"
-      style={{ opacity, scale }}
+      className="min-h-dvh w-full flex flex-col items-center justify-center relative z-50 px-6 py-24"
+      initial={{ opacity: 0, scale: 0.9 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
     >
       <div className="text-center max-w-3xl liquid-glass-strong p-16 rounded-[3rem]">
         <h2 className="text-5xl md:text-7xl font-medium text-white mb-8 leading-tight tracking-tight">

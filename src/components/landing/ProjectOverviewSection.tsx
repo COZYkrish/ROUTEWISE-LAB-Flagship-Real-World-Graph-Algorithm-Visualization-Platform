@@ -1,20 +1,14 @@
-import { motion, MotionValue, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Activity } from 'lucide-react';
 
-interface Props {
-  scrollYProgress: MotionValue<number>;
-}
-
-export default function ProjectOverviewSection({ scrollYProgress }: Props) {
-  // Appears between 0.1 and 0.25, fades out by 0.35
-  const opacity = useTransform(scrollYProgress, [0.05, 0.15, 0.25, 0.35], [0, 1, 1, 0]);
-  const y = useTransform(scrollYProgress, [0.05, 0.15, 0.25, 0.35], [100, 0, 0, -100]);
-  const scale = useTransform(scrollYProgress, [0.05, 0.15, 0.25, 0.35], [0.95, 1, 1, 1.05]);
-
+export default function ProjectOverviewSection() {
   return (
     <motion.section 
-      className="min-h-screen w-full flex items-center justify-center px-6 md:px-24 py-24"
-      style={{ opacity, y, scale }}
+      className="w-full flex items-center justify-center px-6 md:px-24 py-24"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
     >
       <div className="max-w-4xl w-full liquid-glass-strong rounded-[2.5rem] p-10 md:p-16 flex flex-col items-center text-center">
         <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center mb-8 liquid-glass">

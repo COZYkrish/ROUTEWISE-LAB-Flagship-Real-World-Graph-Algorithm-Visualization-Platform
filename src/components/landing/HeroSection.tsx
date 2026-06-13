@@ -1,20 +1,13 @@
-import { motion, MotionValue, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ChevronDown, MapPin } from 'lucide-react';
 
-interface Props {
-  scrollYProgress: MotionValue<number>;
-}
-
-export default function HeroSection({ scrollYProgress }: Props) {
-  // Fade out early in the scroll (0 to 0.15)
-  const opacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
-  const y = useTransform(scrollYProgress, [0, 0.15], [0, -100]);
-  const scale = useTransform(scrollYProgress, [0, 0.15], [1, 0.9]);
-
+export default function HeroSection() {
   return (
     <motion.section 
-      className="h-screen w-full flex flex-col items-center justify-center relative px-6"
-      style={{ opacity, y, scale }}
+      className="min-h-dvh w-full flex flex-col items-center justify-center relative px-6"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
     >
       <div className="absolute top-8 left-8 flex items-center gap-3">
         <div className="w-10 h-10 liquid-glass rounded-full flex items-center justify-center">
@@ -27,7 +20,8 @@ export default function HeroSection({ scrollYProgress }: Props) {
         <motion.h1 
           className="text-6xl md:text-8xl font-medium tracking-tight text-white mb-8 leading-tight"
           initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
         >
           Logistics Intelligence <br />
@@ -38,8 +32,9 @@ export default function HeroSection({ scrollYProgress }: Props) {
         <motion.div 
           className="flex flex-wrap justify-center gap-4 mt-12"
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8, duration: 1 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.5, duration: 1 }}
         >
           {['Real-Time Traversal', 'Interactive Waypoints', 'Algorithmic Comparisons'].map((pill) => (
             <div key={pill} className="liquid-glass px-6 py-2 rounded-full text-sm text-white/80">
@@ -52,8 +47,9 @@ export default function HeroSection({ scrollYProgress }: Props) {
       <motion.div 
         className="absolute bottom-12 flex flex-col items-center gap-4 text-white/50"
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 1 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay: 1, duration: 1 }}
       >
         <span className="text-xs uppercase tracking-[0.3em] font-medium">Scroll to dive in</span>
         <motion.div

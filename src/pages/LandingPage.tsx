@@ -1,5 +1,4 @@
 import { useRef } from 'react';
-import { useScroll } from 'framer-motion';
 import HeroSection from '../components/landing/HeroSection';
 import ProjectOverviewSection from '../components/landing/ProjectOverviewSection';
 import ProblemSection from '../components/landing/ProblemSection';
@@ -9,15 +8,11 @@ import CTASection from '../components/landing/CTASection';
 
 export default function LandingPage() {
   const containerRef = useRef<HTMLDivElement>(null);
-  
-  const { scrollYProgress } = useScroll({
-    container: containerRef
-  });
 
   return (
     <div 
       ref={containerRef} 
-      className="w-screen h-screen overflow-y-auto overflow-x-hidden bg-black text-white font-sans relative hide-scrollbar"
+      className="w-screen h-dvh overflow-y-auto overflow-x-hidden bg-black text-white font-sans relative hide-scrollbar overscroll-none"
     >
       {/* Fixed Video Background */}
       <div className="fixed inset-0 z-0 pointer-events-none">
@@ -35,13 +30,13 @@ export default function LandingPage() {
       </div>
 
       {/* Scrollable Content Overlays */}
-      <div className="relative z-10 pb-32">
-        <HeroSection scrollYProgress={scrollYProgress} />
-        <ProjectOverviewSection scrollYProgress={scrollYProgress} />
-        <ProblemSection scrollYProgress={scrollYProgress} />
-        <SolutionSection scrollYProgress={scrollYProgress} />
-        <FeaturesSection scrollYProgress={scrollYProgress} />
-        <CTASection scrollYProgress={scrollYProgress} />
+      <div className="relative z-10 flex flex-col items-center">
+        <HeroSection />
+        <ProjectOverviewSection />
+        <ProblemSection />
+        <SolutionSection />
+        <FeaturesSection />
+        <CTASection />
       </div>
     </div>
   );

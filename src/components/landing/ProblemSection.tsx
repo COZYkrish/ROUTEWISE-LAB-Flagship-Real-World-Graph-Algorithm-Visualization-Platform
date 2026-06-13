@@ -1,20 +1,14 @@
-import { motion, MotionValue, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { TriangleAlert } from 'lucide-react';
 
-interface Props {
-  scrollYProgress: MotionValue<number>;
-}
-
-export default function ProblemSection({ scrollYProgress }: Props) {
-  // Appears between 0.25 and 0.4, fades out by 0.55
-  const opacity = useTransform(scrollYProgress, [0.25, 0.35, 0.45, 0.55], [0, 1, 1, 0]);
-  const y = useTransform(scrollYProgress, [0.25, 0.35, 0.45, 0.55], [100, 0, 0, -100]);
-  const scale = useTransform(scrollYProgress, [0.25, 0.35, 0.45, 0.55], [0.95, 1, 1, 1.05]);
-
+export default function ProblemSection() {
   return (
     <motion.section 
-      className="min-h-screen w-full flex items-center justify-start px-6 md:px-24 py-24"
-      style={{ opacity, y, scale }}
+      className="w-full flex items-center justify-start px-6 md:px-24 py-24"
+      initial={{ opacity: 0, x: -50 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
     >
       <div className="max-w-2xl liquid-glass-strong p-10 md:p-16 rounded-[2.5rem]">
         <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center mb-8 liquid-glass">

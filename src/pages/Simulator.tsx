@@ -18,7 +18,7 @@ export default function Simulator() {
   };
 
   return (
-    <div className="w-screen h-screen flex relative overflow-hidden bg-[#0a0a0f] text-white font-sans">
+    <div className="w-screen h-dvh flex relative overflow-hidden bg-[#0a0a0f] text-white font-sans">
       <div className="absolute inset-0 z-0">
         <MapView />
       </div>
