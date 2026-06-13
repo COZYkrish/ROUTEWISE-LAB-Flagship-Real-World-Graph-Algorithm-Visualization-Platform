@@ -83,7 +83,7 @@ There was a massive, undocumented gap between:
 
 ## 📸 Live Demo & Screenshots
 
-> **[🔗 Live Demo: routewise-lab.vercel.app](#)** ← *Add your Vercel URL here*
+> **[🔗 Live Demo: routewise-lab.vercel.app](https://routewise-lab.vercel.app/)**
 
 > **[💻 GitHub Repository](https://github.com/COZYkrish/ROUTEWISE-LAB-Flagship-Real-World-Graph-Algorithm-Visualization-Platform)**
 
