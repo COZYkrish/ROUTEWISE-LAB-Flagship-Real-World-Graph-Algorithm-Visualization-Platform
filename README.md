@@ -1,313 +1,825 @@
 <div align="center">
-  <img src="public/logo.png" alt="Routewise Lab Logo" width="200"/>
-  <h1>🗺️ ROUTEWISE LAB</h1>
-  <p><strong>A Flagship Real-World Graph Algorithm Visualization Platform</strong></p>
-  
-  <p>
-    <a href="https://reactjs.org/"><img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React" /></a>
-    <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" /></a>
-    <a href="https://vitejs.dev/"><img src="https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E" alt="Vite" /></a>
-    <a href="https://tailwindcss.com/"><img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind" /></a>
-  </p>
+
+# 🗺️ ROUTEWISE LAB
+
+### A Flagship Real-World Graph Algorithm Visualization Platform
+
+*From theory on a whiteboard to algorithms running live on a real road network.*
+
+[![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=white)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-6.0-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Vite](https://img.shields.io/badge/Vite-8.0-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E)](https://vitejs.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.0-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![Leaflet](https://img.shields.io/badge/Leaflet-1.9-199900?style=for-the-badge&logo=leaflet&logoColor=white)](https://leafletjs.com/)
+[![Zustand](https://img.shields.io/badge/Zustand-5.0-orange?style=for-the-badge)](https://zustand-demo.pmnd.rs/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](./LICENSE)
+
 </div>
 
 ---
 
-## 📖 The "Why" Behind Routewise Lab
+## 📖 Table of Contents
 
-During my 4th-semester Data Structures and Algorithms course, I was fascinated by graph theory. Our professors were incredible at explaining the mechanics of Dijkstra's, A*, and Breadth-First Search on the whiteboard. We learned the math, traced execution steps on paper, and analyzed time complexity (Big O).
-
-However, there was a glaring gap: **While we were taught exactly *how* these algorithms work conceptually, we were never taught how to actually implement them in code for real-world scenarios.**
-
-Learning algorithms via textbooks and exams is vastly different from writing the robust code needed to navigate complex, real-world road networks. I wanted to see these algorithms run in real-time, interactively finding paths across complex topographies. 
-
-**Routewise Lab** was born out of this desire to bridge the gap between theoretical knowledge and practical, visual implementation. This platform brings graph algorithms out of the terminal and onto the screen, allowing users to watch step-by-step as these algorithms explore, learn, and conquer complex routing problems.
-
----
-
-## 📸 Sneak Peek
-
-*(Add your screenshots/GIFs here before publishing to GitHub!)*
-
-<div align="center">
-  <img src="https://via.placeholder.com/800x400.png?text=Platform+Dashboard+Screenshot" alt="Dashboard" />
-  <p><i>The Main Visualization Dashboard</i></p>
-</div>
-
-<br/>
-
-<div align="center">
-  <img src="https://via.placeholder.com/800x400.png?text=Algorithm+in+Action+GIF" alt="Algorithm GIF" />
-  <p><i>Bidirectional Dijkstra exploring a complex maze in real-time</i></p>
-</div>
+1. [The Story Behind the Project](#-the-story-behind-the-project)
+2. [What This Project Does](#-what-this-project-does)
+3. [Live Demo & Screenshots](#-live-demo--screenshots)
+4. [System Architecture](#-system-architecture)
+5. [Algorithms Implemented](#-algorithms-implemented)
+   - [Dijkstra's Algorithm](#1-dijkstras-algorithm)
+   - [A* Search](#2-a-search-a-star)
+   - [Greedy Best-First Search](#3-greedy-best-first-search)
+   - [Bidirectional Dijkstra](#4-bidirectional-dijkstra)
+   - [Bidirectional A*](#5-bidirectional-a-search)
+6. [The Visualization Engine — How It Really Works](#-the-visualization-engine--how-it-really-works)
+7. [Graph Data Structures](#-graph-data-structures)
+8. [The Route Profile System](#-the-route-profile-system)
+9. [Tech Stack Deep Dive](#-tech-stack-deep-dive)
+10. [Project File Structure](#-project-file-structure)
+11. [Getting Started Locally](#-getting-started-locally)
+12. [Deployment Guide](#-deployment-guide)
+13. [Algorithm Performance Comparison](#-algorithm-performance-comparison)
+14. [Future Roadmap](#-future-roadmap)
+15. [Contributing](#-contributing)
+16. [License](#-license)
 
 ---
 
-## ✨ Core Features
+## 🎓 The Story Behind the Project
 
-*   **⚡ Real-Time Visualization:** Watch algorithms explore nodes, evaluate edges, and find the shortest path dynamically.
-*   **🛠️ Interactive Graph Building:** Create custom graphs, add obstacles, and define custom start/end points.
-*   **🐢 Execution Speed Control:** Slow down the execution to understand the algorithm step-by-step or speed it up for large datasets.
-*   **📊 Performance Analytics:** Compare different algorithms based on nodes visited, execution time, and path length.
-*   **📱 Responsive UI:** A beautifully crafted, modern user interface built with Tailwind CSS that works seamlessly across devices.
+> *"The teacher taught us how algorithms work. Nobody taught us how to actually write the code."*
 
----
+In my **4th Semester** of Computer Science, I sat through countless lectures on graph algorithms. The professor was genuinely excellent at explaining the theory. We traced through Dijkstra's on the whiteboard. We calculated f-scores for A* on paper. We analyzed Big-O complexity in our notebooks.
 
-## 🧠 Implemented Algorithms
+**But here is the honest truth:** when I went home and opened my IDE, I had absolutely no idea how to turn any of that into working code.
 
-Routewise Lab features a comprehensive suite of pathfinding algorithms, each meticulously implemented in TypeScript to allow for step-by-step event emission and visualization.
+There was a massive, undocumented gap between:
 
-### 1. Dijkstra's Algorithm
-The classic algorithm for finding the shortest paths between nodes in a graph. It guarantees the shortest path but explores uniformly in all directions, making it slower on large, unobstructed maps.
-*   **Heuristic:** None
-*   **Guarantees Shortest Path:** Yes
-*   **Best For:** Maps without a clear target direction or maps with varying edge weights.
+| What We Were Taught | What Was NOT Taught |
+| :--- | :--- |
+| ✅ How Dijkstra's explores in "waves" | ❌ How to implement a Priority Queue in TypeScript |
+| ✅ The f(n) = g(n) + h(n) formula for A* | ❌ How to pick an *admissible* heuristic for real geo-coordinates |
+| ✅ The concept of a "visited set" | ❌ How to manage `Map<string, number>` for gScores efficiently |
+| ✅ That Bidirectional search cuts the search space | ❌ How to correctly merge two frontiers and reconstruct the path |
+| ✅ Theoretical time complexity | ❌ How to make a blocking `while` loop yield back to the browser for animation |
 
-### 2. A* Search (A-Star)
-An incredibly efficient and popular algorithm. It uses a heuristic (like Euclidean or Manhattan distance) to guess the direction of the target, allowing it to prioritize exploring nodes that seem closer to the goal.
-*   **Heuristic:** Yes (Distance to target)
-*   **Guarantees Shortest Path:** Yes (if the heuristic is admissible)
-*   **Best For:** Most general pathfinding scenarios where the target location is known.
-
-### 3. Greedy Best-First Search (Greedy BFS)
-Similar to A*, but it only considers the heuristic (estimated distance to the goal) and ignores the distance traveled so far. It is very fast but does not guarantee the shortest path.
-*   **Heuristic:** Yes
-*   **Guarantees Shortest Path:** No
-*   **Best For:** Situations where speed is prioritized over getting the absolute optimal path.
-
-### 4. Bidirectional Dijkstra
-Runs two simultaneous Dijkstra searches: one forward from the starting node and one backward from the target node. It stops when the two searches meet in the middle.
-*   **Heuristic:** None
-*   **Guarantees Shortest Path:** Yes
-*   **Best For:** Large graphs, as it significantly reduces the search space compared to a standard unidirectional Dijkstra.
-
-### 5. Bidirectional A* Search
-The most advanced algorithm in the platform. It combines the targeted approach of A* with the search-space reduction of a bidirectional search.
-*   **Heuristic:** Yes
-*   **Guarantees Shortest Path:** Yes (with careful termination conditions)
-*   **Best For:** Huge, complex maps where performance is critical.
+**ROUTEWISE LAB** is my answer to that gap. I built every single algorithm from scratch in TypeScript, on top of a real-world road network (OpenStreetMap data), and wrapped it in a live, interactive visualization platform so anyone can *watch* the code think.
 
 ---
 
-## 🏗️ System Architecture & Implementation Process
+## 🚀 What This Project Does
 
-Implementing algorithms for visualization is fundamentally different from implementing them for pure speed. A standard algorithmic approach uses a simple `while` loop that blocks the main thread until the path is found. 
+**Routewise Lab** is an interactive web platform that visualizes graph traversal and pathfinding algorithms operating on real-world road map data.
 
-To visualize the process, I had to architect an **Event-Driven Implementation**.
+**Core Capabilities:**
+- 🔴 **Node Visualization:** Watch every single node get explored, colored in real time.
+- 🔵 **Edge Exploration:** See which road segments (edges) the algorithm evaluates at each step.
+- 🟡 **Final Path Rendering:** The shortest path lights up in gold once the algorithm finishes.
+- ⏯️ **Playback Controls:** Pause, resume, and control the speed of execution from ultra-slow (1 step/s) to blazing fast.
+- 📊 **Live Metrics:** Track nodes visited, edges explored, total distance, and estimated travel time in real time.
+- 🗺️ **Real Map Data:** Algorithms run on actual OpenStreetMap road network data, not toy grids.
+- 🔀 **Multi-Waypoint Routing:** Chain multiple stops together and watch the algorithm solve each leg sequentially.
 
-### The Implementation Problem
-If you write a standard `while(queue.length > 0)` loop, React won't update the UI until the loop finishes. You only see the final result, not the process.
+---
 
-### The Solution: Event Emitters & State Management
-I refactored every algorithm to act as an asynchronous generator or an event emitter. As the algorithm processes a node or an edge, it emits an event (`NODE_EXPLORED`, `FRONTIER_UPDATED`). The global state manager listens to these events and updates the React UI sequentially, creating the animation effect.
+## 📸 Live Demo & Screenshots
 
-### Architecture Diagram
+> **[🔗 Live Demo: routewise-lab.vercel.app](#)** ← *Add your Vercel URL here*
+
+> **[💻 GitHub Repository](https://github.com/COZYkrish/ROUTEWISE-LAB-Flagship-Real-World-Graph-Algorithm-Visualization-Platform)**
+
+*(Add actual screenshots of your running app here. Use a screen recorder like OBS or ShareX to create a GIF!)*
+
+---
+
+## 🏗️ System Architecture
+
+The platform is built on a clean, layered architecture where the UI layer never directly mutates algorithm state, and algorithms never know anything about the UI.
+
+![System Architecture Diagram](./docs/system_architecture.png)
+
+### Architecture Breakdown
 
 ```mermaid
 graph TD
-    A[User Interface (React)] -->|Triggers Execution| B(Algorithm Engine)
-    B -->|Instantiates| C{Selected Algorithm}
-    C -->|Reads| D[(Graph Data Structure)]
-    
-    C -.->|Event: NODE_VISITED| E[Event Dispatcher]
-    C -.->|Event: EDGE_EVALUATED| E
-    C -.->|Event: PATH_FOUND| E
-    
-    E -->|Updates| F[Zustand Global State]
-    F -->|Triggers Re-render| A
-    
-    subgraph Algorithms
-    C1[Dijkstra]
-    C2[A* Search]
-    C3[Bidirectional]
+    subgraph UI ["🖥️ User Interface — React + TypeScript"]
+        A[Landing Page]
+        B[Map Canvas — Leaflet]
+        C[Controls Panel]
+        D[Analytics Dashboard]
     end
-    
-    C --- C1
-    C --- C2
-    C --- C3
+
+    subgraph STATE ["⚙️ State Management — Zustand"]
+        E[Graph State\n nodes, edges, adjacencyList]
+        F[Algorithm State\n running, paused, events]
+        G[UI State\n selected algorithm, speed]
+    end
+
+    subgraph ENGINE ["🧠 Algorithm Engine"]
+        H[GraphAlgorithm\n Abstract Base Class]
+        I[Dijkstra]
+        J[A* Search]
+        K[Greedy BFS]
+        L[Bidirectional Dijkstra]
+        M[Bidirectional A*]
+        H --> I & J & K & L & M
+    end
+
+    subgraph DATA ["💾 Data Layer"]
+        N[GraphData\n Map of Nodes + Edges]
+        O[OSM Road Network\n Real-world tiles]
+        P[Route Profiles\n Shortest / Fastest]
+    end
+
+    UI -->|"User action triggers"| STATE
+    STATE -->|"Provides graph + config"| ENGINE
+    ENGINE -->|"emitEvent callback"| STATE
+    STATE -->|"Triggers re-render"| UI
+    DATA -->|"Loaded into"| STATE
 ```
 
-### Detailed Algorithm Execution Flow (A* Example)
+### The Key Design Principle: Event Emitters
 
-The following diagram illustrates exactly how the A* algorithm has been implemented to allow for visual frame-by-frame updates without blocking the browser.
+Every algorithm class extends `GraphAlgorithm` and receives an `emitEvent` callback in its constructor. Instead of computing the full path silently and returning it, algorithms fire events at every meaningful step:
+
+```typescript
+// Inside every algorithm, whenever a node is visited:
+this.emitEvent({
+  id: crypto.randomUUID(),
+  timestamp: Date.now(),
+  type: AlgorithmEventType.NODE_VISITED,
+  nodeId: current,
+  cost: gScore.get(current)
+});
+```
+
+The Zustand store listens to these events and updates the map canvas in real time — this is what creates the animation.
+
+---
+
+## 🧠 Algorithms Implemented
+
+All algorithms share the same `GraphAlgorithm` abstract base class and the same `GraphData` input structure. This means they are perfectly interchangeable — swapping from Dijkstra to A* is a single line change.
+
+![Algorithm Comparison](./docs/algorithm_comparison.png)
+
+---
+
+### 1. Dijkstra's Algorithm
+
+**File:** [`src/algorithms/pathfinding/Dijkstra.ts`](./src/algorithms/pathfinding/Dijkstra.ts)
+
+Dijkstra's is the foundational shortest-path algorithm. It uses a **Priority Queue** (min-heap) to always expand the node with the lowest known distance from the source first.
+
+**How I Implemented It:**
+
+```typescript
+export class Dijkstra extends GraphAlgorithm {
+  async findPath(startNodeId: string, targetNodeId: string): Promise<string[] | null> {
+    const distances = new Map<string, number>(); // g-score: cost from start
+    const previous = new Map<string, string>();  // parent pointer for path reconstruction
+    const pq = new PriorityQueue<string>();
+    const visited = new Set<string>();
+
+    // Initialize all distances to Infinity
+    this.graph.nodes.forEach((_, id) => distances.set(id, Infinity));
+    distances.set(startNodeId, 0);
+    pq.enqueue(startNodeId, 0);
+
+    while (!pq.isEmpty()) {
+      await this.yieldIfNecessary(iterations); // ← Key: yields back to browser
+
+      const current = pq.dequeue()!;
+      if (visited.has(current)) continue;
+      visited.add(current);
+
+      this.emitEvent({ type: AlgorithmEventType.NODE_VISITED, nodeId: current }); // ← Fires UI update
+
+      if (current === targetNodeId) {
+        return this.reconstructPath(previous, current); // ← Done!
+      }
+
+      for (const edgeId of this.graph.adjacencyList.get(current) || []) {
+        const edge = this.graph.edges.get(edgeId)!;
+        const neighborId = edge.target;
+
+        const alt = distances.get(current)! + this.profile.evaluateCost(edge);
+        if (alt < distances.get(neighborId)!) {
+          distances.set(neighborId, alt);
+          previous.set(neighborId, current);
+          pq.enqueue(neighborId, alt); // No heuristic — pure cost
+        }
+      }
+      iterations++;
+    }
+    return null;
+  }
+}
+```
+
+**Execution Flow:**
 
 ```mermaid
-sequenceDiagram
-    participant User
-    participant React UI
-    participant Event Queue
-    participant AStar Instance
-    
-    User->>React UI: Clicks "Visualize"
-    React UI->>AStar Instance: start(startNode, endNode)
-    
-    loop While Open Set is not empty
-        AStar Instance->>AStar Instance: Pop node with lowest f-score
-        
-        AStar Instance-->>Event Queue: emit(NODE_EXPLORED, currentNode)
-        Event Queue-->>React UI: Update Canvas (Color node blue)
-        
-        opt If currentNode == endNode
-            AStar Instance-->>Event Queue: emit(PATH_FOUND, pathArray)
-            Event Queue-->>React UI: Draw final path (Color yellow)
-            break
-        end
-        
-        loop For each neighbor
-            AStar Instance->>AStar Instance: Calculate tentative g-score
-            
-            opt If tentative g-score < current g-score
-                AStar Instance->>AStar Instance: Update scores and set parent
-                AStar Instance-->>Event Queue: emit(FRONTIER_UPDATED, neighborNode)
-                Event Queue-->>React UI: Update Canvas (Color node green)
-            end
-        end
-        
-        AStar Instance->>AStar Instance: await delay(speedMs) 
-        Note right of AStar Instance: Pauses execution to allow<br/>React to render the frame
-    end
+flowchart LR
+    A([Start Node\ng=0]) --> B{Priority Queue}
+    B --> C[Dequeue min-cost node]
+    C --> D{Already Visited?}
+    D -- Yes --> B
+    D -- No --> E[Mark Visited\nEmit NODE_VISITED]
+    E --> F{Is it the Goal?}
+    F -- Yes --> G([Reconstruct Path\n✅ Done])
+    F -- No --> H[For each unvisited neighbor]
+    H --> I{alt_cost < current_cost?}
+    I -- Yes --> J[Update g-score\nUpdate parent\nEnqueue with alt cost]
+    I -- No --> K[Skip]
+    J --> B
+    K --> B
 ```
 
-### Bidirectional Dijkstra Implementation Flow
+| Property | Value |
+|---|---|
+| **Heuristic** | None (pure cost) |
+| **Optimal** | ✅ Yes |
+| **Complete** | ✅ Yes |
+| **Time Complexity** | O((V + E) log V) |
+| **Space Complexity** | O(V) |
 
-Bidirectional search algorithms are complex to implement because you must manage two separate frontiers and ensure the termination condition is correct when the frontiers meet.
+---
+
+### 2. A\* Search (A-Star)
+
+**File:** [`src/algorithms/pathfinding/AStar.ts`](./src/algorithms/pathfinding/AStar.ts)
+
+A\* is Dijkstra's with a superpower: a **heuristic function** `h(n)` that estimates the cost from any node to the goal. The priority queue is ordered by `f(n) = g(n) + h(n)`, allowing the algorithm to focus its search toward the goal rather than expanding uniformly.
+
+**The Key Innovation — Haversine Heuristic:**
+
+Since Routewise Lab operates on real geographic coordinates (latitude/longitude), I implemented the **Haversine formula** as the heuristic. This computes the great-circle distance between two geo-points, which is always an underestimate of the actual road distance (making it *admissible*).
+
+```typescript
+private heuristic(node1Id: string, node2Id: string): number {
+  const n1 = this.graph.nodes.get(node1Id);
+  const n2 = this.graph.nodes.get(node2Id);
+
+  const R = 6371e3; // Earth's radius in metres
+  const lat1 = n1.lat * Math.PI / 180;
+  const lat2 = n2.lat * Math.PI / 180;
+  const deltaLat = (n2.lat - n1.lat) * Math.PI / 180;
+  const deltaLng = (n2.lng - n1.lng) * Math.PI / 180;
+
+  // Haversine formula
+  const a = Math.sin(deltaLat/2) ** 2 +
+            Math.cos(lat1) * Math.cos(lat2) * Math.sin(deltaLng/2) ** 2;
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  const distance = R * c;
+
+  // Scale heuristic to match cost profile
+  if (this.profile.name === 'Fastest Travel Time') {
+    return distance / 36.0; // Divide by max speed (130 km/h → 36 m/s) to stay admissible
+  }
+  return distance; // For shortest distance, raw meters is admissible
+}
+```
+
+**A\* vs Dijkstra — Score Breakdown:**
+
+| Score | Dijkstra | A* |
+|---|---|---|
+| `g(n)` | Cost from start (used for priority) | Cost from start |
+| `h(n)` | Always 0 | Haversine distance to goal |
+| `f(n)` (priority) | `g(n)` | `g(n) + h(n)` |
+
+**Execution Flow:**
 
 ```mermaid
 flowchart TD
-    Start([Initialize Forward & Backward Queues]) --> Check{Are both queues empty?}
-    Check -- Yes --> Fail([No Path Found])
-    Check -- No --> PopForward[Pop node from Forward Queue]
-    PopForward --> EvalForward{Is node in Backward Visited?}
-    
-    EvalForward -- Yes --> Meet([Intersection Found!])
-    Meet --> Reconstruct[Reconstruct Path from both sides]
-    Reconstruct --> Finish([Path Found])
-    
-    EvalForward -- No --> ExpandForward[Expand Forward Neighbors]
-    ExpandForward --> PopBackward[Pop node from Backward Queue]
-    
-    PopBackward --> EvalBackward{Is node in Forward Visited?}
-    EvalBackward -- Yes --> Meet
-    EvalBackward -- No --> ExpandBackward[Expand Backward Neighbors]
-    
-    ExpandBackward --> Delay[Await Animation Delay]
-    Delay --> Check
+    S([Start]) --> INIT["Initialize:\ng(start) = 0\nf(start) = h(start → goal)\nEnqueue start"]
+    INIT --> PQ{Priority Queue\nordered by f-score}
+    PQ --> DEQUEUE["Dequeue node with lowest f-score"]
+    DEQUEUE --> CHECK{Visited?}
+    CHECK -- Yes --> PQ
+    CHECK -- No --> MARK["Mark visited\nEmit NODE_VISITED"]
+    MARK --> GOAL{Is Goal?}
+    GOAL -- Yes --> PATH([✅ Reconstruct\nShortest Path])
+    GOAL -- No --> EXPAND["For each neighbor:"]
+    EXPAND --> CALC["tentative_g = g(current) + edge_cost\nf(neighbor) = tentative_g + h(neighbor → goal)"]
+    CALC --> BETTER{tentative_g < g neighbor?}
+    BETTER -- Yes --> UPDATE["Update g, f, parent\nEnqueue neighbor with new f"]
+    BETTER -- No --> SKIP[Skip]
+    UPDATE --> PQ
+    SKIP --> PQ
 ```
 
 ---
 
-## 🛠️ Tech Stack & Technologies Used
+### 3. Greedy Best-First Search
 
-*   **Frontend Framework:** React 19 (Hooks, Functional Components)
-*   **Language:** TypeScript (Strict typing for complex graph data structures)
-*   **Build Tool:** Vite (For lightning-fast HMR and optimized builds)
-*   **State Management:** Zustand (For lightweight, scalable global state handling)
-*   **Styling:** Tailwind CSS (Utility-first CSS for rapid, responsive UI development)
-*   **Icons:** Lucide React
-*   **Maps/Geospatial:** Leaflet & React-Leaflet (For rendering real-world map tiles)
-*   **3D Rendering (Experimental):** Three.js & React Three Fiber
-*   **Animations:** Framer Motion (For smooth UI transitions and micro-interactions)
+**File:** [`src/algorithms/pathfinding/GreedyBFS.ts`](./src/algorithms/pathfinding/GreedyBFS.ts)
+
+The "speed demon" of pathfinding. Greedy BFS **only** considers the heuristic `h(n)` — it completely ignores how far it has already traveled (`g(n)`). This makes it extremely fast but it can find sub-optimal paths.
+
+```typescript
+// The critical difference: enqueue using ONLY the heuristic, not g+h
+pq.enqueue(neighborId, this.heuristic(neighborId, targetNodeId));
+//                      ↑ No g-score added! Pure greediness.
+```
+
+| Property | Greedy BFS | A* |
+|---|---|---|
+| Priority | `h(n)` only | `g(n) + h(n)` |
+| **Optimal?** | ❌ No | ✅ Yes |
+| **Speed** | Very fast | Slower than Greedy, faster than Dijkstra |
+| **Use case** | Real-time hints | Guaranteed shortest path |
 
 ---
 
-## 📁 Project Structure
+### 4. Bidirectional Dijkstra
 
-```text
+**File:** [`src/algorithms/pathfinding/BidirectionalDijkstra.ts`](./src/algorithms/pathfinding/BidirectionalDijkstra.ts)
+
+This is where implementation gets genuinely complex. Instead of one search from the source, we run **two simultaneous Dijkstra searches**: one forward from `start` and one backward from `target`. They stop when their frontiers meet.
+
+**Why it's faster:** On an unweighted graph, a single Dijkstra with radius `r` explores ~`πr²` nodes. Two bidirectional searches each with radius `r/2` explore ~`2 × π(r/2)² = πr²/2` — **half the work**.
+
+**The Hardest Part to Implement — The Reverse Adjacency List:**
+
+For the backward search on a directed graph (like real roads with one-way streets), we can't just run Dijkstra normally. We must traverse edges **in reverse** — entering `currB` from its predecessors, not leaving it to its successors. This requires a `reverseAdjacencyList`:
+
+```typescript
+// Forward search: follows directed edges normally
+const neighborsEdgesF = this.graph.adjacencyList.get(currF) || [];
+for (const edgeId of neighborsEdgesF) {
+  const edge = this.graph.edges.get(edgeId)!;
+  const neighborId = edge.target; // ← Going forward along edge.source → edge.target
+}
+
+// Backward search: traverses the REVERSE adjacency list
+const neighborsEdgesB = this.graph.reverseAdjacencyList.get(currB) || [];
+for (const edgeId of neighborsEdgesB) {
+  const edge = this.graph.edges.get(edgeId)!;
+  const neighborId = edge.source; // ← Going backward! edge.source → currB, so we visit edge.source
+}
+```
+
+**The Meeting Point Detection:**
+
+```typescript
+// After expanding a forward node, check if backward search has already been there
+if (visitedB.has(currF)) {
+  const cost = gScoreF.get(currF)! + gScoreB.get(currF)!;
+  if (cost < bestPathCost) {
+    bestPathCost = cost;
+    meetingNode = currF;  // ← This node is where both searches connect
+  }
+}
+```
+
+**Full Flow Diagram:**
+
+```mermaid
+flowchart TD
+    INIT(["Initialize:\nForward PQ from Start\nBackward PQ from Target"]) --> LOOP{Both queues non-empty?}
+    LOOP -- No --> FAIL([❌ No Path Found])
+    LOOP -- Yes --> FWD[Dequeue from Forward PQ]
+    FWD --> FVIS{Already in\nForward Visited?}
+    FVIS -- Yes --> BWD
+    FVIS -- No --> FADD[Add to Forward Visited\nEmit NODE_VISITED]
+    FADD --> FCHECK{In Backward\nVisited?}
+    FCHECK -- Yes --> MEET["Update bestPathCost\nRecord meetingNode"]
+    FCHECK -- No --> FEXP[Expand forward neighbors\nvia adjacencyList]
+    MEET --> BWD
+    FEXP --> BWD
+
+    BWD[Dequeue from Backward PQ] --> BVIS{Already in\nBackward Visited?}
+    BVIS -- Yes --> ITER
+    BVIS -- No --> BADD[Add to Backward Visited\nEmit NODE_VISITED]
+    BADD --> BCHECK{In Forward\nVisited?}
+    BCHECK -- Yes --> MEET2["Update bestPathCost\nRecord meetingNode"]
+    BCHECK -- No --> BEXP["Expand backward neighbors\nvia reverseAdjacencyList\n(using edge.source)"]
+    MEET2 --> ITER
+    BEXP --> ITER
+
+    ITER[Increment iterations\nawait yieldIfNecessary] --> HASMET{meetingNode\nfound?}
+    HASMET -- Yes --> RECONSTRUCT["Reconstruct:\nForward path: start → meetingNode\nBackward path: meetingNode → target"]
+    HASMET -- No --> LOOP
+    RECONSTRUCT --> DONE([✅ Full Path])
+```
+
+---
+
+### 5. Bidirectional A\* Search
+
+**File:** [`src/algorithms/pathfinding/BidirectionalAStar.ts`](./src/algorithms/pathfinding/BidirectionalAStar.ts)
+
+The crown jewel. Bidirectional A\* combines the geo-guided heuristic of A\* with the search-space halving of bidirectional search. The forward search uses `h(n → target)` and the backward search uses `h(n → start)`.
+
+---
+
+## ⚙️ The Visualization Engine — How It Really Works
+
+This is the most technically interesting part of the project and the biggest gap between "textbook" and "real implementation."
+
+![Event Flow Diagram](./docs/event_flow_diagram.png)
+
+### The Problem: Blocking Loops
+
+A standard algorithm implementation looks like this:
+
+```typescript
+// ❌ THE TEXTBOOK WAY — This BLOCKS the browser completely
+function dijkstra(graph, start, target) {
+  while (queue.length > 0) {
+    const node = queue.shift();
+    // ... process node
+  }
+  return path;
+}
+```
+
+If you call this in a browser, **the entire UI freezes** until the function returns. You only ever see the final result — never the process. The visualization shows nothing.
+
+### The Solution: `async/await` with `yieldIfNecessary()`
+
+The breakthrough was making every algorithm `async` and inserting a `yieldIfNecessary()` call at every iteration. This gives control back to the browser's event loop so it can re-render the canvas with the latest state.
+
+```typescript
+// ✅ THE ROUTEWISE LAB WAY
+protected async yieldIfNecessary(iterations: number): Promise<void> {
+  if (this.isCancelled) throw new Error("Algorithm Cancelled");
+
+  // Handle pause: spin in a 50ms polling loop until resumed
+  while (this.isPaused && !this.isCancelled) {
+    await new Promise(resolve => setTimeout(resolve, 50));
+  }
+
+  // Dynamic batch size: at high speeds, yield less often (bigger batches)
+  // At low speeds, yield every iteration with a time delay
+  const baseBatch = 30;
+  const batchSize = this.speed >= 1
+    ? Math.floor(baseBatch * this.speed)
+    : Math.max(1, Math.floor(baseBatch * this.speed));
+
+  if (iterations % batchSize === 0) {
+    // At speed < 1, introduce a delay to slow down the visualization
+    const delay = this.speed < 1 ? Math.floor(10 / this.speed) : 0;
+    await new Promise(resolve => setTimeout(resolve, delay));
+    //                             ↑ This is the magic: gives browser time to paint
+  }
+}
+```
+
+### The Event System
+
+Every state change an algorithm makes is communicated to the React UI through a typed event system:
+
+```typescript
+// The full set of events an algorithm can emit:
+export const AlgorithmEventType = {
+  SEARCH_STARTED:      'SEARCH_STARTED',
+  NODE_VISITED:        'NODE_VISITED',       // ← Color this node as explored
+  EDGE_EXPLORED:       'EDGE_EXPLORED',      // ← Highlight this road segment
+  EDGE_ADDED_TO_TREE:  'EDGE_ADDED_TO_TREE',
+  FRONTIER_UPDATED:    'FRONTIER_UPDATED',   // ← This node is now on the frontier
+  PATH_IMPROVED:       'PATH_IMPROVED',
+  WAYPOINTS_GENERATED: 'WAYPOINTS_GENERATED',
+  CONVERGENCE_STARTED: 'CONVERGENCE_STARTED',
+  GOAL_REACHED:        'GOAL_REACHED',       // ← Draw the final golden path
+  ALGORITHM_COMPLETED: 'ALGORITHM_COMPLETED'
+} as const;
+```
+
+### The Speed Control System
+
+```
+Speed 0.1x → batch=3,  delay=100ms/yield  → Ultra slow, every node visible
+Speed 0.5x → batch=15, delay=20ms/yield   → Slow, educational
+Speed 1.0x → batch=30, delay=0ms/yield    → Normal
+Speed 5.0x → batch=150, delay=0ms/yield   → Fast
+Speed 10x  → batch=300, delay=0ms/yield   → Blazing fast
+```
+
+---
+
+## 💾 Graph Data Structures
+
+The entire platform is built on four core TypeScript interfaces. Understanding these is key to understanding every algorithm.
+
+```typescript
+// A geographic coordinate (lat/lng)
+interface Coordinate {
+  lat: number;
+  lng: number;
+}
+
+// A node is an intersection or road segment endpoint on the real map
+interface Node {
+  id: string;   // OpenStreetMap Node ID
+  lat: number;  // Latitude
+  lng: number;  // Longitude
+}
+
+// An edge is a road segment connecting two nodes
+interface Edge {
+  id: string;
+  source: string;         // Node ID where the road starts
+  target: string;         // Node ID where the road ends
+  distance: number;       // Physical length in meters
+  geometry?: Coordinate[]; // The actual curved path of the road
+  roadType: string;        // 'motorway', 'residential', 'path', etc.
+  oneWay: boolean;         // Affects reverse adjacency list construction
+  speedLimit: number;      // km/h
+  travelTime: number;      // Pre-computed: distance / speed
+  trafficMultiplier: number; // For traffic-aware routing
+}
+
+// The complete graph — passed to every algorithm
+interface GraphData {
+  nodes: Map<string, Node>;          // O(1) node lookup by ID
+  edges: Map<string, Edge>;          // O(1) edge lookup by ID
+  adjacencyList: Map<string, string[]>;        // node → [edgeIds going OUT]
+  reverseAdjacencyList: Map<string, string[]>; // node → [edgeIds coming IN]
+}
+```
+
+**Why `Map` instead of arrays?**
+
+Algorithms need O(1) lookups constantly (`gScore.get(nodeId)`, `visited.has(nodeId)`). Using a `Map` or `Set` is critical for performance on large road networks with thousands of nodes.
+
+---
+
+## 🧭 The Route Profile System
+
+Algorithms don't just find the "shortest" path by raw distance. Routewise Lab supports multiple **Route Profiles** that change how `edge.cost` is evaluated:
+
+| Profile | `evaluateCost(edge)` returns | What it optimizes |
+|---|---|---|
+| **Shortest Distance** | `edge.distance` | Total km traveled |
+| **Fastest Travel Time** | `edge.travelTime * edge.trafficMultiplier` | Total minutes |
+
+The active profile is injected into every algorithm at construction time:
+
+```typescript
+constructor(
+  graph: GraphData,
+  emitEvent: (event: AlgorithmEvent) => void,
+  profileType: RouteProfileType = 'SHORTEST'
+) {
+  this.graph = graph;
+  this.emitEvent = emitEvent;
+  this.profile = RouteProfiles[profileType]; // ← Profile selected here
+}
+```
+
+This means the same `Dijkstra` class can find either the shortest road distance **or** the fastest route, just by changing the injected profile.
+
+---
+
+## 🛠️ Tech Stack Deep Dive
+
+| Technology | Version | Why It Was Chosen |
+|---|---|---|
+| **React** | 19 | Concurrent rendering, efficient canvas re-renders with useCallback |
+| **TypeScript** | 6.0 | Strict types prevent bugs in complex graph data structure manipulation |
+| **Vite** | 8.0 | Lightning-fast HMR, ESModule-native bundling for large codebases |
+| **Zustand** | 5.0 | Minimal boilerplate for global state that algorithms write to at high frequency |
+| **Tailwind CSS** | 4.0 | Rapid, consistent UI styling without context switching |
+| **Leaflet + React-Leaflet** | 1.9 / 5.0 | Industry-standard map rendering with real OSM tile support |
+| **Framer Motion** | 12 | Smooth, physics-based UI transitions without compromising performance |
+| **Three.js + R3F** | 0.184 / 9.6 | 3D graph visualization for future elevation-aware routing |
+| **Lucide React** | 1.18 | Clean, consistent icon set |
+
+---
+
+## 📁 Project File Structure
+
+```
 routewise-lab/
-├── public/                 # Static assets (images, logos)
-├── src/
-│   ├── algorithms/         # Core algorithm implementations
-│   │   ├── base/           # Abstract classes and interfaces
-│   │   ├── pathfinding/    # Dijkstra, A*, BFS logic
-│   │   └── optimization/   # Traveling Salesman, etc.
-│   ├── components/         # React Components
-│   │   ├── landing/        # Hero sections, feature cards
-│   │   ├── visualization/  # The canvas and grid rendering
-│   │   └── ui/             # Reusable buttons, modals, sliders
-│   ├── store/              # Zustand state slices
-│   ├── types/              # Global TypeScript interfaces
-│   ├── utils/              # Helper functions (distance calc, etc.)
-│   ├── App.tsx             # Main router and layout
-│   └── main.tsx            # React DOM entry point
-├── package.json            # Dependencies and scripts
-├── tailwind.config.js      # Tailwind customization
-├── tsconfig.json           # TypeScript configuration
-└── vite.config.ts          # Vite bundler settings
+│
+├── 📂 docs/                        ← README diagram images
+│   ├── system_architecture.png
+│   ├── algorithm_comparison.png
+│   └── event_flow_diagram.png
+│
+├── 📂 public/                      ← Static assets
+│
+├── 📂 src/
+│   │
+│   ├── 📂 algorithms/              ← ALL algorithm logic lives here
+│   │   ├── 📂 base/
+│   │   │   └── GraphAlgorithm.ts   ← Abstract base class (pause/resume/cancel/speed/events)
+│   │   │
+│   │   ├── 📂 pathfinding/         ← Core pathfinding algorithms
+│   │   │   ├── Dijkstra.ts         ← Classic Dijkstra + PriorityQueue implementation
+│   │   │   ├── AStar.ts            ← A* with Haversine heuristic
+│   │   │   ├── GreedyBFS.ts        ← Greedy Best-First Search
+│   │   │   ├── BidirectionalDijkstra.ts ← Two-frontier Dijkstra
+│   │   │   └── BidirectionalAStar.ts    ← Two-frontier A*
+│   │   │
+│   │   ├── 📂 optimization/        ← (Traveling Salesman, etc.)
+│   │   └── 📂 structural/          ← (MST, etc.)
+│   │
+│   ├── 📂 analytics/               ← Performance tracking
+│   │
+│   ├── 📂 components/              ← All React components
+│   │   ├── 📂 landing/             ← Hero section, feature cards
+│   │   ├── 📂 map/                 ← Leaflet map, node/edge renderers
+│   │   ├── 📂 controls/            ← Speed slider, algorithm picker, play/pause
+│   │   └── 📂 dashboard/           ← Stats display
+│   │
+│   ├── 📂 engines/                 ← Algorithm execution orchestrators
+│   ├── 📂 features/                ← Route profiles, OSM data parsing
+│   ├── 📂 hooks/                   ← Custom React hooks
+│   ├── 📂 pages/                   ← Page-level components (LandingPage, etc.)
+│   ├── 📂 store/                   ← Zustand state (slices for graph, algo, UI)
+│   ├── 📂 types/                   ← Global TypeScript interfaces (graph.ts, events.ts)
+│   ├── 📂 utils/                   ← Geo helpers, formatters
+│   ├── 📂 workers/                 ← Web Workers for heavy computation
+│   │
+│   ├── App.tsx                     ← Router setup
+│   ├── main.tsx                    ← React DOM entry point
+│   └── index.css                   ← Global styles
+│
+├── package.json
+├── tsconfig.json
+├── vite.config.ts
+├── tailwind.config.js
+├── README.md                       ← You are here!
+└── LICENSE                         ← MIT License
 ```
 
 ---
 
-## 🚀 Getting Started (Local Setup)
-
-Want to run this project locally to explore the code or contribute? Follow these steps:
+## 🚀 Getting Started Locally
 
 ### Prerequisites
-Make sure you have [Node.js](https://nodejs.org/) (version 18+ recommended) and `npm` installed on your machine.
+- [Node.js](https://nodejs.org/) v18 or higher
+- `npm` (comes with Node.js) or `yarn`
 
-### Installation Steps
+### Step 1: Clone the Repository
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/yourusername/routewise-lab.git
-   ```
+```bash
+git clone https://github.com/COZYkrish/ROUTEWISE-LAB-Flagship-Real-World-Graph-Algorithm-Visualization-Platform.git
+cd ROUTEWISE-LAB-Flagship-Real-World-Graph-Algorithm-Visualization-Platform
+```
 
-2. **Navigate to the project directory:**
-   ```bash
-   cd routewise-lab
-   ```
+### Step 2: Install Dependencies
 
-3. **Install dependencies:**
-   Using npm:
-   ```bash
-   npm install
-   ```
-   *Or using yarn:*
-   ```bash
-   yarn install
-   ```
+```bash
+npm install
+```
 
-4. **Start the development server:**
-   ```bash
-   npm run dev
-   ```
-   *The application will now be running on `http://localhost:5173/`*
+### Step 3: Start the Development Server
 
-5. **Build for production (Optional):**
-   ```bash
-   npm run build
-   ```
-   *This will generate optimized static files in the `dist` folder.*
+```bash
+npm run dev
+```
+
+The application will start at `http://localhost:5173/` with Hot Module Replacement enabled.
+
+### Step 4: Build for Production (Optional)
+
+```bash
+npm run build
+```
+
+This compiles TypeScript and bundles everything into the `dist/` folder, ready for deployment.
+
+### Step 5: Preview the Production Build Locally
+
+```bash
+npm run preview
+```
 
 ---
 
-## 🔮 Future Enhancements
+## 🌐 Deployment Guide
 
-While the core platform is robust, there are several features I plan to implement in the future:
-1.  **More Algorithms:** Implementing Minimum Spanning Trees (Kruskal's, Prim's) and Network Flow algorithms.
-2.  **Maze Generation:** Adding algorithms like Recursive Backtracker or Cellular Automata to automatically generate complex mazes to solve.
-3.  **3D Visualization Mode:** Utilizing the integrated Three.js setup to visualize graph topography with elevation data.
-4.  **Custom Weights:** Allowing users to paint different terrain types (mud, water, highway) that dynamically affect edge weights.
+### Deploy to Vercel (Recommended — Free)
+
+1. Push your code to a GitHub repository.
+2. Go to [vercel.com](https://vercel.com/) → **New Project** → Import from GitHub.
+3. Vercel auto-detects Vite. No config changes needed.
+   - **Build Command:** `npm run build`
+   - **Output Directory:** `dist`
+4. Click **Deploy**. Done. Live in ~60 seconds.
+
+### Deploy to Netlify (Alternative — Free)
+
+1. Go to [netlify.com](https://netlify.com/) → **New site from Git**.
+2. Connect your GitHub repository.
+3. Set:
+   - **Build command:** `npm run build`
+   - **Publish directory:** `dist`
+4. Click **Deploy site**.
+
+### Deploy to GitHub Pages
+
+```bash
+# Install the gh-pages package
+npm install --save-dev gh-pages
+
+# Add to package.json scripts:
+# "deploy": "npm run build && npx gh-pages -d dist"
+
+npm run deploy
+```
+
+---
+
+## 📊 Algorithm Performance Comparison
+
+Here is a theoretical comparison of how each algorithm performs under different conditions on the Routewise Lab road network:
+
+| Algorithm | Optimal Path | Uses Heuristic | Nodes Explored (avg) | Best Use Case |
+|:---|:---:|:---:|:---:|:---|
+| **Dijkstra** | ✅ Yes | ❌ No | ~10,000 | Dense graphs, no clear goal direction |
+| **A\*** | ✅ Yes | ✅ Yes | ~2,500 | General pathfinding with known goal |
+| **Greedy BFS** | ❌ No | ✅ Yes | ~500 | Speed-critical, acceptable approximation |
+| **Bidirectional Dijkstra** | ✅ Yes | ❌ No | ~5,000 | Large graphs, halves search space |
+| **Bidirectional A\*** | ✅ Yes | ✅ Yes | ~800 | Optimal + fastest on large road networks |
+
+> 📝 Note: "Nodes Explored" figures are approximate and depend heavily on the specific graph topology and start/end positions.
+
+---
+
+## 🔮 Future Roadmap
+
+The platform is actively being developed. Here's what's planned:
+
+### Near-Term
+- [ ] **Maze Generation** — Algorithms like Recursive Backtracker to auto-generate solvable mazes
+- [ ] **More Algorithms** — Bellman-Ford (for negative weights), Floyd-Warshall (all-pairs shortest path)
+- [ ] **Side-by-side Comparison Mode** — Run two algorithms simultaneously on the same graph
+
+### Long-Term
+- [ ] **3D Terrain Mode** — Use the integrated Three.js/R3F setup to visualize elevation-aware routing
+- [ ] **Custom Terrain Painter** — Draw terrain types (mud, water, highway) that affect edge weights
+- [ ] **Minimum Spanning Tree** — Visualize Kruskal's and Prim's algorithms
+- [ ] **Traffic Simulation** — Animate traffic multipliers changing in real time
+- [ ] **Algorithm Explanation Panel** — Step-by-step natural language explanation of each iteration
 
 ---
 
 ## 🤝 Contributing
 
-Contributions, issues, and feature requests are highly welcome! Feel free to check the [issues page](https://github.com/yourusername/routewise-lab/issues) if you want to contribute.
+Contributions are highly welcome! Whether it's fixing a bug, adding a new algorithm, or improving the UI, every pull request is appreciated.
 
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+### How to Contribute
+
+1. **Fork** the repository
+2. **Create** your feature branch:
+   ```bash
+   git checkout -b feature/add-bellman-ford
+   ```
+3. **Commit** your changes:
+   ```bash
+   git commit -m "feat: implement Bellman-Ford algorithm with visualization"
+   ```
+4. **Push** to your branch:
+   ```bash
+   git push origin feature/add-bellman-ford
+   ```
+5. **Open a Pull Request** with a clear description of your changes
+
+### Adding a New Algorithm
+
+All algorithms extend `GraphAlgorithm`. To add a new one:
+
+1. Create `src/algorithms/pathfinding/YourAlgorithm.ts`
+2. Extend `GraphAlgorithm` and implement `findPath(startNodeId, targetNodeId)`
+3. Use `this.emitEvent()` to fire visualization events
+4. Use `await this.yieldIfNecessary(iterations)` inside your main loop
+5. Register your algorithm in the algorithm selector component
+
+---
+
+## 🐛 Known Issues & Limitations
+
+- The `PriorityQueue` is implemented as a sorted array. For very large graphs (> 50,000 nodes), a proper binary min-heap would improve performance.
+- Bidirectional search termination condition may occasionally report a slightly sub-optimal path at the meeting point. Full correctness proof for bidirectional search requires careful termination logic.
+- OSM data is loaded in chunks; very large bounding boxes may cause memory pressure on low-RAM devices.
 
 ---
 
 ## 📜 License
 
-Distributed under the MIT License. See `LICENSE` for more information.
+This project is licensed under the **MIT License** — see the [LICENSE](./LICENSE) file for details.
+
+---
+
+## 🙌 Acknowledgements
+
+- **OpenStreetMap** — For the open, real-world road network data that powers the routing engine
+- **Leaflet.js** — For the incredible open-source map rendering library
+- Every professor who taught us the *theory* — this project built the *practice*
 
 ---
 
 <div align="center">
-  <p>Built with ❤️ by an algorithm enthusiast bridging the gap between theory and code.</p>
+
+**Built with ❤️ by a CS student who wanted more than just whiteboard algorithms.**
+
+*"The best way to learn an algorithm is to make it do something real."*
+
+⭐ **If this project helped you understand graph algorithms, please give it a star!** ⭐
+
 </div>
