@@ -37,7 +37,7 @@ export default function HeroSection() {
         <span className="text-xl font-semibold tracking-tighter text-white drop-shadow-md">RouteWise</span>
       </motion.div> */}
 
-      <motion.div variants={itemVariants} className="text-center max-w-4xl liquid-glass-strong rounded-[3rem] p-10 md:p-16 shadow-2xl border border-white/10 hover:border-white/20 transition-colors duration-500">
+      {/* <motion.div variants={itemVariants} className="text-center max-w-4xl liquid-glass-strong rounded-[3rem] p-10 md:p-16 shadow-2xl border border-white/10 hover:border-white/20 transition-colors duration-500">
         <motion.h1
           className="text-5xl md:text-7xl font-medium tracking-tight text-white mb-6 leading-tight drop-shadow-lg"
           variants={itemVariants}
@@ -45,7 +45,7 @@ export default function HeroSection() {
           Logistics Intelligence <br />
           <span className="text-white/80">for a world that</span> <br />
           <i className="font-serif italic text-white">never stops moving.</i>
-        </motion.h1>
+        </motion.h1> */}
 
         <motion.div
           className="flex flex-wrap justify-center gap-3 md:gap-4 mt-8"
@@ -73,6 +73,6 @@ export default function HeroSection() {
           </div>
         </motion.div>
       </motion.div>
-    </motion.section>
+    </motion.section >
   );
 }
