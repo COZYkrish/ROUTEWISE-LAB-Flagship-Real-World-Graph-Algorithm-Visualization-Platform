@@ -12,14 +12,14 @@ const containerVariants = {
   }
 };
 
-// const itemVariants = {
-//   hidden: { opacity: 0, y: 30 },
-//   visible: { 
-//     opacity: 1, 
-//     y: 0, 
-//     transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const } 
-//   }
-// };
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }
+  }
+};
 
 export default function HeroSection() {
   return (
@@ -30,12 +30,12 @@ export default function HeroSection() {
       whileInView="visible"
       viewport={{ once: true }}
     >
-      <motion.div variants={itemVariants} className="absolute top-8 left-8 flex items-center gap-3">
+      {/* <motion.div variants={itemVariants} className="absolute top-8 left-8 flex items-center gap-3">
         <div className="w-10 h-10 liquid-glass rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
           <MapPin className="w-5 h-5 text-white" />
         </div>
         <span className="text-xl font-semibold tracking-tighter text-white drop-shadow-md">RouteWise</span>
-      </motion.div>
+      </motion.div> */}
 
       <motion.div variants={itemVariants} className="text-center max-w-4xl liquid-glass-strong rounded-[3rem] p-10 md:p-16 shadow-2xl border border-white/10 hover:border-white/20 transition-colors duration-500">
         <motion.h1
